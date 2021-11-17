@@ -16,7 +16,7 @@ DIRECTORY=$(dirname "${0}")
 cd "$DIRECTORY"
 
 #Request new name
-echo "Input new project name"
+echo "Input new project name:"
 read NEW_NAME
 
 #Confirmation
@@ -30,12 +30,15 @@ then
 fi
 
 #Self destruction
-rm ./rename-project.command
+rm ./init.sh
 
 #Git setup
 git init
 git add -A
 git commit -m "Inital commit"
+# https://git-scm.com/book/en/v2/Git-Branching-Branch-Management
+# Rename your local master branch into main with the following command:
+git branch --move master main
 
 #Body
 transform "$BASE_NAME" "$NEW_NAME"

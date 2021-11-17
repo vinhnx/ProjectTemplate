@@ -16,14 +16,12 @@ To setup project follow a few simple steps:
 
 Download prject as `zip` file.
 
-### Rename project
+### Initialzation
 
-For new project, you would need to choose a name.
-
-Open Terminal, run:
+Open Terminal, run `init.sh` script to bootstrap new project:
 
 ```bash
-$ ./rename-project.command
+$ ./init.sh
 ```
 
 ### Configure CocoaPods

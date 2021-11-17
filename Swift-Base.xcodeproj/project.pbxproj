@@ -24,9 +24,7 @@
 		A3FDE82227453DDE00FFBA65 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = A3FDE82127453DDE00FFBA65 /* Then */; };
 		A3FDE82527453F4D00FFBA65 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = A3FDE82427453F4D00FFBA65 /* Kingfisher */; };
 		A3FDE82827453F8D00FFBA65 /* Localize_Swift in Frameworks */ = {isa = PBXBuildFile; productRef = A3FDE82727453F8D00FFBA65 /* Localize_Swift */; };
-		A3FDE82B2745419900FFBA65 /* Collections in Frameworks */ = {isa = PBXBuildFile; productRef = A3FDE82A2745419900FFBA65 /* Collections */; };
-		A3FDE82D2745419900FFBA65 /* DequeModule in Frameworks */ = {isa = PBXBuildFile; productRef = A3FDE82C2745419900FFBA65 /* DequeModule */; };
-		A3FDE82F2745419900FFBA65 /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = A3FDE82E2745419900FFBA65 /* OrderedCollections */; };
+		A3FDE8322745459F00FFBA65 /* NVNetworkRequest in Frameworks */ = {isa = PBXBuildFile; productRef = A3FDE8312745459F00FFBA65 /* NVNetworkRequest */; };
 		CB109C4822832CF800632EC9 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB109C4722832CF800632EC9 /* Log.swift */; };
 		CB109C8322833FD900632EC9 /* LoggedPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB109C7C22833FD800632EC9 /* LoggedPageViewController.swift */; };
 		CB109C9F2283407900632EC9 /* LoggedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB109C9B2283407900632EC9 /* LoggedTableViewController.swift */; };
@@ -97,14 +95,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A3FDE82B2745419900FFBA65 /* Collections in Frameworks */,
 				A3FDE82527453F4D00FFBA65 /* Kingfisher in Frameworks */,
 				213B89BF19F01A1E005D3749 /* CoreGraphics.framework in Frameworks */,
-				A3FDE82D2745419900FFBA65 /* DequeModule in Frameworks */,
 				A3FDE82827453F8D00FFBA65 /* Localize_Swift in Frameworks */,
 				A3FDE82227453DDE00FFBA65 /* Then in Frameworks */,
-				A3FDE82F2745419900FFBA65 /* OrderedCollections in Frameworks */,
 				55424E8C2566F919F2921DD2 /* Pods_Swift_Base.framework in Frameworks */,
+				A3FDE8322745459F00FFBA65 /* NVNetworkRequest in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,9 +338,7 @@
 				A3FDE82127453DDE00FFBA65 /* Then */,
 				A3FDE82427453F4D00FFBA65 /* Kingfisher */,
 				A3FDE82727453F8D00FFBA65 /* Localize_Swift */,
-				A3FDE82A2745419900FFBA65 /* Collections */,
-				A3FDE82C2745419900FFBA65 /* DequeModule */,
-				A3FDE82E2745419900FFBA65 /* OrderedCollections */,
+				A3FDE8312745459F00FFBA65 /* NVNetworkRequest */,
 			);
 			productName = "Swift-Base";
 			productReference = 21DB300F19DD2289003A418D /* Swift-Base.app */;
@@ -406,7 +400,7 @@
 				A3FDE82027453DDE00FFBA65 /* XCRemoteSwiftPackageReference "Then" */,
 				A3FDE82327453F4D00FFBA65 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				A3FDE82627453F8D00FFBA65 /* XCRemoteSwiftPackageReference "Localize-Swift" */,
-				A3FDE8292745419900FFBA65 /* XCRemoteSwiftPackageReference "swift-collections" */,
+				A3FDE8302745459F00FFBA65 /* XCRemoteSwiftPackageReference "NVNetworkRequest" */,
 			);
 			productRefGroup = 21DB301019DD2289003A418D /* Products */;
 			projectDirPath = "";
@@ -1002,12 +996,12 @@
 				minimumVersion = 3.2.0;
 			};
 		};
-		A3FDE8292745419900FFBA65 /* XCRemoteSwiftPackageReference "swift-collections" */ = {
+		A3FDE8302745459F00FFBA65 /* XCRemoteSwiftPackageReference "NVNetworkRequest" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/apple/swift-collections.git";
+			repositoryURL = "https://github.com/vinhnx/NVNetworkRequest";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.0.3;
+				minimumVersion = 0.1.3;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -1028,20 +1022,10 @@
 			package = A3FDE82627453F8D00FFBA65 /* XCRemoteSwiftPackageReference "Localize-Swift" */;
 			productName = Localize_Swift;
 		};
-		A3FDE82A2745419900FFBA65 /* Collections */ = {
+		A3FDE8312745459F00FFBA65 /* NVNetworkRequest */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = A3FDE8292745419900FFBA65 /* XCRemoteSwiftPackageReference "swift-collections" */;
-			productName = Collections;
-		};
-		A3FDE82C2745419900FFBA65 /* DequeModule */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = A3FDE8292745419900FFBA65 /* XCRemoteSwiftPackageReference "swift-collections" */;
-			productName = DequeModule;
-		};
-		A3FDE82E2745419900FFBA65 /* OrderedCollections */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = A3FDE8292745419900FFBA65 /* XCRemoteSwiftPackageReference "swift-collections" */;
-			productName = OrderedCollections;
+			package = A3FDE8302745459F00FFBA65 /* XCRemoteSwiftPackageReference "NVNetworkRequest" */;
+			productName = NVNetworkRequest;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

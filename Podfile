@@ -10,7 +10,6 @@ def includeCommonPods
   
   # Helpers
   pod 'SwiftDate'
-  pod 'SwifterSwift'
 end
 
 target 'Swift-Base' do
