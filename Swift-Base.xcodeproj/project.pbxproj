@@ -195,8 +195,8 @@
 			isa = PBXGroup;
 			children = (
 				8832CB152656AB7B00ADD8F7 /* AppDelegate */,
-				A3FDE81F27453A8F00FFBA65 /* Models */,
-				CB109C8A22833FE100632EC9 /* Views */,
+				A3FDE83327454C4D00FFBA65 /* Models */,
+				A3FDE83427454C5A00FFBA65 /* Views */,
 				0721AE2C2046EE57009B4474 /* ViewControllers */,
 				0721AE272046EDB1009B4474 /* Configuration */,
 				CB109C2E22832A7500632EC9 /* Helper */,
@@ -282,12 +282,18 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
-		A3FDE81F27453A8F00FFBA65 /* Models */ = {
+		A3FDE83327454C4D00FFBA65 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			name = Models;
-			path = AppDelegate/Models;
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A3FDE83427454C5A00FFBA65 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		CB109C2E22832A7500632EC9 /* Helper */ = {
@@ -296,13 +302,6 @@
 				5E13D8FB24B5F39E0081B960 /* Log */,
 			);
 			path = Helper;
-			sourceTree = "<group>";
-		};
-		CB109C8A22833FE100632EC9 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		CB4EB180222ED72B00FF2232 /* Swift-BaseTests */ = {
