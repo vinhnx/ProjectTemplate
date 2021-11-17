@@ -1,5 +1,5 @@
 //
-//  LoggedPageViewController.swift
+//  BasePageViewController.swift
 //  Tools
 //
 

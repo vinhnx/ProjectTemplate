@@ -1,5 +1,5 @@
 //
-//  LoggedTabBarController.swift
+// BaseTabBarController.swift
 //  Tools
 //
 

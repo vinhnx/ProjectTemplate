@@ -1,5 +1,5 @@
 //
-//  LoggedTableViewController.swift
+// BaseTableViewController.swift
 //  Tools
 //
 

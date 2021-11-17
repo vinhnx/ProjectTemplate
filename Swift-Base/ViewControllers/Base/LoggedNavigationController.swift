@@ -1,5 +1,5 @@
 //
-//  LoggedNavigationController.swift
+// BaseNavigationController.swift
 //  RoomDebts
 //
 

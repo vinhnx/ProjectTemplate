@@ -5,7 +5,6 @@ def includeCommonPods
   # Libraries
   pod 'SwiftLint'
   pod 'R.swift'
-  pod 'Kingfisher', '~> 5.0'
   pod 'IQKeyboardManagerSwift'
   
   # Helpers
