@@ -1,0 +1,151 @@
+# Customise this file, documentation can be found here:
+# https://github.com/fastlane/fastlane/tree/master/fastlane/docs
+# All available actions: https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Actions.md
+# can also be listed using the `fastlane actions` command
+
+# Change the syntax highlighting to Ruby
+# All lines starting with a # are ignored when running `fastlane`
+
+# If you want to automatically update fastlane if a new version is available:
+# update_fastlane
+
+# This is the minimum version number required.
+# Update this, if you use features of a newer version
+fastlane_version "2.120.0"
+
+default_platform(:ios)
+
+before_all do
+  setup_semaphore
+
+  ENV["SCHEME_PRODUCTION"] = "Swift-Base"
+  ENV["BUNDLE_ID_PRODUCTION"] = "com.flatstack.ios.Swift-Base"
+
+  ENV["SCHEME_STAGING"] = "Swift-BaseStaging"
+  ENV["BUNDLE_ID_STAGING"] = "com.flatstack.ios.Swift-Base.staging"
+
+  ENV["CHANGELOG_FILE"] = File.expand_path("../changelog.txt")
+end
+
+platform :ios do
+  # -------------------------------------- #
+  #               Helpers                  #
+  # -------------------------------------- #
+
+  lane :build do
+    match(type: 'appstore')
+    cocoapods
+    gym(scheme: ENV["SCHEME_PRODUCTION"], clean: true, codesigning_identity: "iPhone Distribution")
+  end
+
+  lane :deploy_staging do
+    sync_code_signing(type: "appstore")
+    cocoapods(clean_install: true)
+
+    build_app(
+      scheme: ENV["SCHEME_STAGING"], 
+      clean: true, 
+      codesigning_identity: "iPhone Distribution"
+    )
+
+    upload_to_testflight(username: "apple@flatstack.com")
+    upload_to_firebase
+  end
+
+  lane :deploy_production do
+    sync_code_signing(type: "appstore")
+    cocoapods(clean_install: true)
+
+    build_app(
+      scheme: ENV["SCHEME_PRODUCTION"], 
+      clean: true, 
+      codesigning_identity: "iPhone Distribution"
+    )
+
+    upload_to_testflight(username: "apple@flatstack.com")
+    upload_to_firebase
+  end
+
+  # -------------------------------------- #
+  #               Private                  #
+  # -------------------------------------- #
+
+  desc "Get build number"
+  private_lane :custom_get_number_of_build do |options|
+    get_info_plist_value(key: "CFBundleVersion")
+  end
+
+  desc "Get build number. Need params :value as String"
+  private_lane :custom_set_number_of_build do |options|
+    set_info_plist_value(key: "CFBundleVersion", value: options[:value])
+  end
+
+  # -------------------------------------- #
+  #                Deploy                  #
+  # -------------------------------------- #
+
+  desc "Generate a changelog between last merged commit and last commit"
+  private_lane :create_default_changelog do |options|
+    delete_changelog()
+
+    last_merged_commit = sh("git log --pretty=format:\"%h\" --merges -1")
+    last_commit = sh("git log --pretty=format:\"%h\" -1")
+
+    create_changelog(
+      changelog_from_commit: last_merged_commit,
+      changelog_to_commit: last_commit
+    )
+  end
+
+  desc "Generate a changelog. Need params :changelog_from_commit, :changelog_to_commit as String"
+  private_lane :create_changelog do |options|
+    delete_changelog()
+
+    current_date = Time.now.strftime("%Y/%m/%d %H:%M:%S")
+    first_message = "This version was uploaded automatically by CI\nCI Build number is " + custom_get_number_of_build().to_s + "\nUploaded: " + current_date + "\nChangelog:\n"
+    changelog = changelog_from_git_commits(
+      between: [options[:changelog_from_commit], options[:changelog_to_commit]],
+      pretty: "- %an, %ar : %s",
+      merge_commit_filtering: 'exclude_merges'
+    )
+    full_message = first_message + changelog
+
+    # Write to file
+    out_file = File.new(ENV["CHANGELOG_FILE"], "w+")
+    out_file.puts(full_message)
+    out_file.close
+  end
+
+  desc "Read changelog"
+  private_lane :read_changelog do |options|
+    if File.file?(ENV["CHANGELOG_FILE"])
+      #read the file
+      puts File.read(ENV["CHANGELOG_FILE"])
+    end
+  end
+
+  desc "Deploy a scheme to firebase."
+  private_lane :upload_to_firebase do
+    firebase_app_distribution(
+      app: "1:644059465480:ios:1f9f7065c70a913c5ccebd",
+      firebase_cli_path: "/usr/local/bin/firebase",
+    )
+  end
+
+  # -------------------------------------- #
+  #                 Clean                  #
+  # -------------------------------------- #
+
+  desc "Delete changelog"
+  private_lane :delete_changelog do |options|
+    if File.file?(ENV["CHANGELOG_FILE"])
+      File.delete(ENV["CHANGELOG_FILE"])
+    end
+  end
+end
+
+# More information about multiple platforms in fastlane: https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Platforms.md
+# All available actions: https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Actions.md
+
+# fastlane reports which actions are used
+# No personal data is recorded. Learn more at https://github.com/fastlane/enhancer

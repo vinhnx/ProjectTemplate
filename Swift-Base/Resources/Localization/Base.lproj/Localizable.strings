@@ -1,0 +1,16 @@
+/* Localized versions of Info.plist keys */
+
+/*------------Common-----------*/
+"alert_close" = "Close";
+"alert_dismiss" = "Dismiss";
+"alert_ok" = "OK";
+
+/*-------------API-----------*/
+"internet_disconnected_title" = "No Internet Connection";
+"internet_disconnected_message" = "Please check your Wi-Fi or mobile network connection and try again.";
+"unknown_error_title" = "Something went wrong";
+"unknown_error_message" = "The Swift-Base team has been notified and is working on a fix. Please try again later.";
+
+/*-------------DEMO-----------*/
+"press_ok" = "Press OK";
+"ok" = "OK";
