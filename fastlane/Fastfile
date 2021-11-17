@@ -13,6 +13,8 @@
 # Update this, if you use features of a newer version
 fastlane_version "2.120.0"
 
+# NOTE: check https://gist.github.com/vinhnx/9e66b40e3a2b2f07e6aebaea7fccca02 for more build scripts
+
 default_platform(:ios)
 
 before_all do
