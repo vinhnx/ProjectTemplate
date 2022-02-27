@@ -1,6 +1,8 @@
 # ProjectTemplate
 
-iOS Swift template application. Orignal by Flatstack. Modified by Vinh Nguyen.
+iOS Swift template application. Orignal by Flatstack. Modified by [Vinh Nguyen](https://github.com/vinhnx).
+
+Also, check out my [NVExtension](https://github.com/vinhnx/NVExtensions) package.
 
 ## Get started
 
